@@ -49,7 +49,7 @@ export default class Turntable {
       context.restore()
 
       context.save();
-      context.fillStyle = '#FFFFFF';
+      context.fillStyle = '#FFF';
       context.font = "14px Arial";
       context.translate(
         150 + Math.cos(startRadian + RadianGap / 2) * 140,
@@ -65,8 +65,39 @@ export default class Turntable {
       endRadian += RadianGap
     }
   }
+  drawButton() {
+    const context = this.context
+    context.save()
+		context.beginPath()
+		context.fillStyle = '#FF0000'
+		context.arc(150, 150, 30, 0, Math.PI * 2, false)
+		context.fill()
+    context.restore()
+    
+    context.save();
+    context.beginPath()
+		context.fillStyle = '#FFF';
+		context.font = '20px Arial';
+    context.translate(150, 150)
+		context.fillText('Start', -context.measureText('Start').width / 2, 8);
+		context.restore();
+  }
+  drawArrow() {
+    const context = this.context
+		context.save();
+		context.beginPath();
+		context.fillStyle = '#FF0000';
+		context.moveTo(140, 125);
+		context.lineTo(150, 100);
+		context.lineTo(160, 125);
+		context.closePath();
+		context.fill();
+		context.restore();
+  }
   render() {
     this.drawPanel()
     this.drawPrizeBlock()
+    this.drawButton()
+    this.drawArrow()
   }
 }
