@@ -11,7 +11,7 @@ class App extends Component {
     canvas.width = 300
     canvas.height = 300
     const turntable = new Turntable({ canvas: canvas, context: context })
-    turntable.render()
+    turntable.startRotate()
   }
   render() {
     return <canvas
